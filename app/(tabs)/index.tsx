@@ -1,7 +1,6 @@
 import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
 
-import { HelloWave } from '@/components/hello-wave';
 import ParallaxScrollView from '@/components/parallax-scroll-view';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
@@ -10,89 +9,121 @@ import { Link } from 'expo-router';
 export default function HomeScreen() {
   return (
     <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
+      headerBackgroundColor={{ light: '#f8e8ef', dark: '#2d1f2f' }}
       headerImage={
         <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
+          source={require('@/assets/images/robe2.png')}
+          style={styles.heroImage}
+          contentFit="cover"
         />
       }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
+      <ThemedView style={styles.heroContainer}>
+        <View style={styles.heroBadge}>
+          <ThemedText type="defaultSemiBold">Nouvelle collection</ThemedText>
+        </View>
+        <ThemedText type="title">Bienvenue dans votre boutique de robes</ThemedText>
+        <ThemedText style={styles.heroDescription}>
+          Découvrez nos modèles tendance, parcourez le catalogue et trouvez la robe parfaite pour votre prochaine sortie.
         </ThemedText>
       </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <Link href="/modal">
-          <Link.Trigger>
-            <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-          </Link.Trigger>
-          <Link.Preview />
-          <Link.Menu>
-            <Link.MenuAction title="Action" icon="cube" onPress={() => alert('Action pressed')} />
-            <Link.MenuAction
-              title="Share"
-              icon="square.and.arrow.up"
-              onPress={() => alert('Share pressed')}
-            />
-            <Link.Menu title="More" icon="ellipsis">
-              <Link.MenuAction
-                title="Delete"
-                icon="trash"
-                destructive
-                onPress={() => alert('Delete pressed')}
-              />
-            </Link.Menu>
-          </Link.Menu>
+
+      <ThemedView style={styles.actionContainer}>
+        <Link href="/catalogue" asChild>
+          <Pressable style={styles.mainButton}>
+            <ThemedText type="defaultSemiBold" style={styles.buttonText}>
+              Voir le catalogue
+            </ThemedText>
+          </Pressable>
         </Link>
 
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
+        <Link href="/explore" asChild>
+          <Pressable style={styles.secondaryButton}>
+            <ThemedText type="defaultSemiBold" style={styles.secondaryButtonText}>
+              En savoir plus
+            </ThemedText>
+          </Pressable>
+        </Link>
       </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
+
+      <ThemedView style={styles.featuresContainer}>
+        <ThemedView style={styles.featureCard}>
+          <ThemedText type="subtitle">Catalogue</ThemedText>
+          <ThemedText>Plus de 20 robes disponibles pour toutes les occasions.</ThemedText>
+        </ThemedView>
+        <ThemedView style={styles.featureCard}>
+          <ThemedText type="subtitle">Produit détaillé</ThemedText>
+          <ThemedText>Une page dédiée pour chaque robe avec photos et description.</ThemedText>
+        </ThemedView>
+        <ThemedView style={styles.featureCard}>
+          <ThemedText type="subtitle">Shopping simple</ThemedText>
+          <ThemedText>Navigation fluide entre l’accueil, le catalogue et les détails.</ThemedText>
+        </ThemedView>
       </ThemedView>
     </ParallaxScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
+  heroImage: {
+    width: '100%',
+    height: 260,
     position: 'absolute',
+    top: 0,
+    left: 0,
+  },
+  heroContainer: {
+    minHeight: 280,
+    justifyContent: 'flex-end',
+    paddingHorizontal: 20,
+    paddingBottom: 24,
+  },
+  heroBadge: {
+    alignSelf: 'flex-start',
+    backgroundColor: '#fff2f9',
+    paddingVertical: 6,
+    paddingHorizontal: 12,
+    borderRadius: 999,
+    marginBottom: 12,
+  },
+  heroDescription: {
+    marginTop: 12,
+    lineHeight: 22,
+    maxWidth: '85%',
+  },
+  actionContainer: {
+    gap: 12,
+    marginTop: 16,
+    paddingHorizontal: 20,
+  },
+  mainButton: {
+    backgroundColor: '#d6336c',
+    borderRadius: 14,
+    paddingVertical: 16,
+    alignItems: 'center',
+  },
+  secondaryButton: {
+    backgroundColor: '#f5f5f8',
+    borderRadius: 14,
+    paddingVertical: 16,
+    alignItems: 'center',
+  },
+  buttonText: {
+    color: '#ffffff',
+  },
+  secondaryButtonText: {
+    color: '#47243c',
+  },
+  featuresContainer: {
+    gap: 12,
+    paddingHorizontal: 20,
+    marginTop: 24,
+    paddingBottom: 24,
+  },
+  featureCard: {
+    backgroundColor: '#ffffff',
+    borderRadius: 18,
+    padding: 18,
+    borderWidth: 1,
+    borderColor: '#f0e4ed',
   },
 });

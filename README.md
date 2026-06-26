@@ -1,4 +1,4 @@
-# 📱 Application E-Commerce Mode - Dev-Mobile
+# Application E-Commerce Mode - Dev-Mobile
 
 Cette application mobile de commerce de mode est développée avec **React Native**, **Expo SDK 54** et **Supabase**. Elle propose une expérience utilisateur fluide avec une gestion complète du catalogue, du panier, de la géolocalisation des boutiques et des notifications de rappel.
 
@@ -16,7 +16,7 @@ Cette application mobile de commerce de mode est développée avec **React Nativ
    - Affichage dynamique des articles disponibles avec prix, photos et descriptions.
    - Détail de chaque produit avec vue zoomée et option d'ajout rapide au panier.
 
-3. **🛒 Gestion du Panier (Zustand & Supabase)**
+3. ** Gestion du Panier (Zustand & Supabase)**
    - Panier synchronisé en temps réel avec la base de données Supabase.
    - Actions d'incrémentation, décrémentation et suppression des articles.
    - Calcul dynamique du montant total et persistance de l'état.
@@ -26,7 +26,7 @@ Cette application mobile de commerce de mode est développée avec **React Nativ
    - Prise de photo en direct via `expo-camera`.
    - Téléchargement sécurisé de l'image sur Supabase Storage (bucket `product_images`) avec politiques de sécurité (RLS) actives.
 
-5. **📍 Boutiques Proches (Expo Location)**
+5. ** Boutiques Proches (Expo Location)**
    - Détection de la position géographique de l'utilisateur avec `expo-location`.
    - Calcul des distances en kilomètres à l'aide de la formule **Haversine**.
    - Tri automatique des boutiques de la plus proche à la plus éloignée.
@@ -77,7 +77,7 @@ Vous pouvez ensuite scanner le QR code avec l'application **Expo Go** (sur iOS/A
 
 ---
 
-## 🧪 Tests Automatisés
+##  Tests Automatisés
 
 Le projet contient des suites de tests unitaires et d'intégration complets configurés avec Jest et `@testing-library/react-native`.
 
